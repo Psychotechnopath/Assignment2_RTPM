@@ -1,14 +1,16 @@
 #%%
 import pandas as pd
 
-UD1_df = pd.read_csv('Filtered dataset UD I.csv')
-UD1_df_case_id = list(UD1_df['Case ID'])
+# UD1_df = pd.read_csv('Filtered dataset UD I.csv')
+# UD1_df_case_id = list(UD1_df['Case ID'])
 
-UD2_df = pd.read_csv('UD2 only (filtered).csv')
-UD2_df_case_id = list(UD2_df['Case ID'])
+# UD2_df = pd.read_csv('UD2 only (filtered).csv')
+# UD2_df_case_id = list(UD2_df['Case ID'])
 
-total_df = pd.read_csv('All cases.csv') #Set CaseId to index col
-total_df_index = total_df.set_index('Case ID', drop=False)
+# total_df = pd.read_csv('All cases.csv') #Set CaseId to index col
+# total_df_index = total_df.set_index('Case ID', drop=False)
+
+total_df = pd.read_csv('Checkpoint.csv')
 
 #%%
 #Only keep last activity
@@ -85,4 +87,4 @@ total_df_sub[['(case) rejected', 'success', '(case) basic payment',
        '(case) selected_random', '(case) selected_risk', '(case) small farmer',
        '(case) young farmer']].astype(int)
 
-total_df_sub.to_csv('Checkpoint.csv', header=True)
+# total_df_sub.to_csv('Checkpoint.csv', header=True)
