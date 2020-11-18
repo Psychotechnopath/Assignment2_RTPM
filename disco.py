@@ -85,4 +85,24 @@ total_df_sub[['(case) rejected', 'success', '(case) basic payment',
        '(case) selected_random', '(case) selected_risk', '(case) small farmer',
        '(case) young farmer']].astype(int)
 
-total_df_sub.to_csv('Checkpoint.csv', header=True)
+
+#Encode payment application as binary var
+activity_binary_list = []
+for index, row in total_df_sub.iterrows():
+    if row['Activity'] == 'Payment application-Application-finish payment':
+        activity_binary_list.append(1)
+    else:
+        activity_binary_list.append(0)
+
+total_df_sub['Activity_binary'] = activity_binary_list
+
+#Load checkpoint, drop more cases.
+pre_processed = pd.read_csv("Checkpoint.csv", index_col=0)
+pre_processed.drop(columns=["Case ID", "Activity", "Resource",
+                            "(case) department", "activity",
+                            "concept:name", "eventid", "subprocess"], inplace=True)
+pre_processed.set_index("Complete Timestamp", inplace=True)
+pre_processed.to_csv("pre_processed.csv")
+
+#%%
+pre_processed['2015'].describe()
