@@ -109,3 +109,5 @@ for index, row in total_df_sub.iterrows():
         penalty_types.append(0)
         selection_types.append(0)
         application_types.append(0)
+
+##SMall check to see if i can push again from laptop
